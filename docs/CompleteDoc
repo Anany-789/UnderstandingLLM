@@ -1,0 +1,12 @@
+Setup:
+-) Generated the API key through openrouter.
+-) And, this is the base url to connect to it: https://openrouter.ai/api/v1/chat/completions
+-) We can mention this to use the free model: openrouter/free
+or we can mention a particular model.
+
+Task 1 ---->The Spring boot app should be able to summarize the content/ customer query.
+
+ For food delivery app :           Customers -----> Query ------> Inshort and to the point
+
+Now, new issues : it takes every request as new one and do not remember anything(Not holding any context).
+And also we are getting responses of irrelevant requests. Like what is 2 + 2?

@@ -1,0 +1,105 @@
+{
+  "info": {
+    "_postman_id": "56cb7f67-825d-4b09-86da-a18d17a44e3a",
+    "name": "UnderstandingLLM",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38699473"
+  },
+  "item": [
+    {
+      "name": "ConnectToLLMTest",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value":"YOUR_API_KEY",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"model\" : \r\n    // \"openrouter/free\",\r\n    // \"nvidia/nemotron-3-ultra-550b-a55b:free\",\r\n    \"inclusionai/ling-3.0-flash-vl:free\",\r\n    \"messages\": [\r\n    {\r\n      \"role\": \"user\",\r\n      \"content\": \"what is my name?\"\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://openrouter.ai/api/v1/chat/completions",
+          "protocol": "https",
+          "host": [
+            "openrouter",
+            "ai"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "chat",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ConnectToLLMthroughApp",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "inclusionai/ling-3.0-flash-vl:free",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "I am extremely frustrated with the way this order has been handled. My food order was supposed to arrive much earlier, but it has now been delayed by almost an hour, and I have already spent a significant amount of time waiting for it.\r\n\r\nThis is not just a minor delay. When I place a food order, I do so expecting it to arrive within the estimated delivery time that was shown to me. I planned my meal around that timing, and because of this delay, I have been left waiting with no proper update or resolution.\r\n\r\nWhat is even more frustrating is that I have had to repeatedly check the status of the order instead of receiving a clear explanation from your side. If there was going to be such a significant delay, I should have been informed properly much earlier.\r\n\r\nAt this point, I want two things: **I want my food order to be delivered, and I also want a double refund/compensation for the inconvenience and excessive delay.** I do not want the order to be cancelled after making me wait for nearly an hour, and I also do not think a simple apology or a small coupon adequately addresses this situation.\r\n\r\nI have already waited this long, so please make sure the order is delivered as soon as possible. At the same time, please process the appropriate refund/compensation for the delay. I am requesting a **double refund along with the order**, considering the amount of time wasted and the inconvenience caused.\r\n\r\nPlease do not give me a generic response asking me to wait another 20–30 minutes. I have already waited far beyond the promised delivery time. I expect this to be escalated and resolved properly rather than being given another estimated time that may not be followed.\r\n\r\nI have been patient throughout this entire situation, but my patience is now exhausted. Please deliver the order and provide the double refund/compensation that I am requesting for this unacceptable delay.\r\n",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/summarizeQuery/summarize",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "summarizeQuery",
+            "summarize"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value":"YOUR_API_KEY",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
+}
