@@ -14,6 +14,16 @@ public class SummarizeService {
 
     private ChatClient chatClient;
 
+    private final String SYSTEM_PROMPT = """
+            You are a customer-support executive for our Food ordering app named Tomato.
+            
+            Your job is to identify the customer's main problem and urgency. Answer them related to there query in 1 line.
+            
+            Use professional language. If user has an issue, use words like I understand your frustration, I am really sorry for your trouble etc.
+            
+            Do not answer any other question which is not related to Ordering Food query, refund query, order tracking status query or company policy query.
+            """;
+
     //To store the context
     private List<Message> history = new ArrayList<>();
 
@@ -46,6 +56,7 @@ public class SummarizeService {
     public String chat(String message) {
         history.add(new UserMessage(message)); //Adding the user message
         String output = chatClient.prompt()
+                .system(SYSTEM_PROMPT) // passing the system prompt
                 .messages(history)
                 .call()
                 .content();

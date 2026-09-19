@@ -14,7 +14,7 @@
           "bearer": [
             {
               "key": "token",
-              "value":"YOUR_API_KEY",
+              "value": "APIKey",
               "type": "string"
             }
           ]
@@ -91,7 +91,7 @@
     "bearer": [
       {
         "key": "token",
-        "value":"YOUR_API_KEY",
+        "value": "APIKey",
         "type": "string"
       }
     ]
