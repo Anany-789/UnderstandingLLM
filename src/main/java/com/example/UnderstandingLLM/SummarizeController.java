@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/summarizeQuery")
+@RequestMapping("/chatApp")
 public class SummarizeController {
     @Autowired
     private SummarizeService summarizeService;
@@ -15,4 +15,9 @@ public class SummarizeController {
         return summarizeService.summarize(ticket);
     }
 
+
+    @PostMapping("/chat")
+    public String chat(@RequestBody  String ticket){
+        return summarizeService.chat(ticket);
+    }
 }

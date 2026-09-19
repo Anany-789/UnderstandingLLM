@@ -10,3 +10,38 @@ Task 1 ---->The Spring boot app should be able to summarize the content/ custome
 
 Now, new issues : it takes every request as new one and do not remember anything(Not holding any context).
 And also we are getting responses of irrelevant requests. Like what is 2 + 2?
+
+
+Task 2 -----> Create the ChatApp
+    Flow:
+            Client ---->  GenAIApp  ---->  LLMmodel
+
+    issue : looses the context
+    Sol: we can store the history somewhere , and we pass history with the client message(LLM does not store anything)
+
+    Roles:
+    System Role : As an LLM what are your roles and responsibilities(It has high priority than the user role).
+    User Role : We, who wants to talk to the LLM models.
+    Assistant Role : LLM model itself. The replies from llm comes under Assistant role.
+    So, will store the messages like this:
+        User ---> Hi, My name is Anany!
+        Assistant ---> Hi Anany!
+
+    Now, we started storing the context.
+
+    Issue : Someone can ask irrelevant question. Want to reply only relevant ones.
+        Proposed sol : In the very starting, we can add the prompt in the history that you are this and do not entertain irrelevant questions.
+            But,there are 2 issues: we need to pass the long prompt with every message and someone can trick it using some good prompt
+            because both have same priority(our prompt and user message, because we are passing the prompt as user message).
+        Implemented sol : Use System PromptI
+
+Context Window(input + output token) : Data in a single prompt
+
+    Issue : Since, the history we are storing grows and we are passing that to the llm with every message. Hence, a lot of tokens
+    are going to get consumed in reading the history.
+        Proposed sol : Summarize the history except last few messages. But this is also not a full proof plan as with this
+            way also our llm might hallucinate. We also have better options available like RAG and memory which we will discuss later.
+
+
+Hallucination : LLM sounds confident even when they are wrong
+    Cannot eliminate(because it is based on probability) it, but can be reduced using RAG, guardrails, Memory, Validations etc.
