@@ -10,7 +10,7 @@ public class SummarizeController {
     private SummarizeService summarizeService;
 
 
-    @PostMapping("/summarie")
+    @PostMapping("/summarize")
     public String summarize(@RequestBody  String ticket){
         return summarizeService.summarize(ticket);
     }
