@@ -51,3 +51,5 @@ LLM can only predict text, it cannot do any task by it self, they can not even c
     So, it will generate the text like what to do and pass on to the tool which performs the task and provide us the result.
 
 Now, we are moving towards AI agents
+    So, LLM just need to know, in which format it needs to pass the data to the tools it is using and now LLM has the power to perform
+    some operation.
