@@ -5,19 +5,20 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/chatApp")
-public class SummarizeController {
+public class ChatController {
     @Autowired
-    private SummarizeService summarizeService;
+    private ChatService chatService;
 
 
     @PostMapping("/summarize")
     public String summarize(@RequestBody  String ticket){
-        return summarizeService.summarize(ticket);
+        return chatService.summarize(ticket);
     }
 
 
     @PostMapping("/chat")
     public String chat(@RequestBody  String ticket){
-        return summarizeService.chat(ticket);
+        System.out.println("cont");
+        return chatService.chat(ticket);
     }
 }

@@ -53,3 +53,45 @@ LLM can only predict text, it cannot do any task by it self, they can not even c
 Now, we are moving towards AI agents
     So, LLM just need to know, in which format it needs to pass the data to the tools it is using and now LLM has the power to perform
     some operation.
+
+
+Task 3 -----> Give the LLM ability to perform some operation.
+    Convert the current chat app into AI app
+
+
+    @Tool: Used on a class method to signal to the framework that this method can be called by an LLM. You typically provide a description
+        explaining what the tool does so the LLM knows when to invoke it.
+    @ToolParam: Used on individual method parameters to give the LLM context about what each argument means, specify descriptions, or explicitly
+        name the parameters.
+    @Tool is mandatory if you want the framework's automatic scanner to recognize the method as a tool. Without it, the framework will ignore the method.
+    Without @ToolParam, the LLM only sees raw parameter names (like arg0 or str). Adding @ToolParam allows you to provide a clear description
+        (e.g., "format: YYYY-MM-DD"), which drastically improves how accurately the LLM populates the arguments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Additional notes:
+   1. Why use ChatClient.Builder instead of injecting ChatClient directly?
+    Think of ChatClient.Builder as a factory or customization kit, and ChatClient as the final product.
+
+    Why a builder? Spring AI gives you a builder so you can optionally customize your AI client before creating it (for example, adding default system instructions like "You are a helpful assistant", setting default safety filters, or adding logging).
+
+    The standard pattern: Spring Boot automatically creates a pre-configured ChatClient.Builder bean for you. By injecting it into your constructor and calling .build(), you get a fully initialized ChatClient ready to talk to your configured AI provider.
+
+    Look at it like this:
+
+    The Machine (chatClient): Built once in the constructor. It knows where to send the request (OpenRouter) and which model to use (openrouter/free). That never changes.
+
+            The Prompt (chatClient.prompt().user(prompt)): This happens fresh every time someone visits the URL. One user might type "Tell me a joke", and another user might type "What is Java?".
